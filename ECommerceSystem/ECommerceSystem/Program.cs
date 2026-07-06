@@ -6,142 +6,150 @@ namespace ECommerceSystem
     internal class Program
     {
         // إنشاء كائن من قاعدة البيانات للتعامل مع EF Core
-        static ApplicationDbContext context = new ApplicationDbContext();
+        static  ApplicationDbContext context = new ApplicationDbContext();
 
 
         //******************************************* Register a New User ***************************************//
-        public static void RegisterNewUser()
+        static void RegisterUser(ApplicationDbContext context)
         {
             // عنوان العملية
             Console.WriteLine("===== Register New User =====");
 
-            // إنشاء كائن جديد من User
-            User user = new User();
+            {
+                Console.Write("Username: ");
+                string username = Console.ReadLine();
 
-            // قراءة اسم المستخدم من المستخدم
-            Console.Write("Username: ");
-            user.Username = Console.ReadLine();
+                Console.Write("Full Name: ");
+                string fullName = Console.ReadLine();
 
-            // قراءة الاسم الكامل
-            Console.Write("Full Name: ");
-            user.FullName = Console.ReadLine();
+                Console.Write("Email: ");
+                string email = Console.ReadLine();
 
-            // قراءة البريد الإلكتروني
-            Console.Write("Email: ");
-            user.Email = Console.ReadLine();
+                Console.Write("Password: ");
+                string password = Console.ReadLine();
 
-            // قراءة كلمة المرور (سيتم تخزينها في PasswordHash حسب تصميم المشروع)
-            Console.Write("Password: ");
-            user.PasswordHash = Console.ReadLine();
+                Console.Write("Phone Number (optional): ");
+                string? phone = Console.ReadLine();
 
-            // قراءة رقم الهاتف
-            Console.Write("Phone Number: ");
-            user.PhoneNumber = Console.ReadLine();
+                Console.Write("Address (optional): ");
+                string? address = Console.ReadLine();
 
-            // قراءة العنوان
-            Console.Write("Address: ");
-            user.Address = Console.ReadLine();
+                User user = new User
+                {
+                    Username = username,
+                    FullName = fullName,
+                    Email = email,
+                    PasswordHash = password,
+                    PhoneNumber = phone,
+                    Address = address,
+                    RegistrationDate = DateTime.Now,
+                    IsActive = true
+                };
 
-            // تعيين تاريخ التسجيل إلى الوقت الحالي
-            user.RegistrationDate = DateTime.Now;
+                context.Users.Add(user);
+                context.SaveChanges();
 
-            // جعل المستخدم نشطًا بشكل افتراضي
-            user.IsActive = true;
-
-            // إضافة المستخدم إلى جدول Users داخل EF Core
-            context.Users.Add(user);
-
-            // حفظ البيانات في قاعدة البيانات
-            context.SaveChanges();
-
-            // عرض رقم المستخدم الذي أنشأته قاعدة البيانات تلقائيًا
-            Console.WriteLine($"User Registered Successfully. ID = {user.UserId}");
+                Console.WriteLine($"User Registered Successfully.");
+                Console.WriteLine($"Assigned User ID = {user.UserId}");
+            }
         }
-
         //******************************************** Add a New Product to a Category **************************************//
-        public static void AddNewProduct()
+        static void AddProduct(ApplicationDbContext context)
         {
-            // عرض عنوان العملية
-            Console.WriteLine("===== Categories =====");
+            Console.WriteLine("Categories:");
 
-            // جلب جميع التصنيفات من قاعدة البيانات وعرضها للمستخدم
             foreach (var c in context.Categories.ToList())
             {
                 Console.WriteLine($"{c.CategoryId} - {c.CategoryName}");
             }
 
-            // إنشاء كائن جديد من Product
-            Product product = new Product();
-
-            // قراءة رقم التصنيف الذي اختاره المستخدم
             Console.Write("Category ID: ");
-            product.CategoryId = int.Parse(Console.ReadLine());
+            int categoryId = int.Parse(Console.ReadLine());
 
-            // قراءة اسم المنتج
             Console.Write("Product Name: ");
-            product.ProductName = Console.ReadLine();
+            string name = Console.ReadLine();
 
-            // قراءة وصف المنتج
             Console.Write("Description: ");
-            product.Description = Console.ReadLine();
+            string description = Console.ReadLine();
 
-            // قراءة سعر المنتج
             Console.Write("Price: ");
-            product.Price = decimal.Parse(Console.ReadLine());
+            decimal price = decimal.Parse(Console.ReadLine());
 
-            // قراءة كمية المنتج الموجودة في المخزون
-            Console.Write("Stock Quantity: ");
-            product.StockQuantity = int.Parse(Console.ReadLine());
+            Console.Write("Stock: ");
+            int stock = int.Parse(Console.ReadLine());
 
-            // قراءة رابط صورة المنتج (اختياري)
-            Console.Write("Image URL: ");
-            product.ImageUrl = Console.ReadLine();
+            Console.Write("Image Url: ");
+            string image = Console.ReadLine();
 
-            // تعيين تاريخ إنشاء المنتج إلى الوقت الحالي
-            product.CreatedAt = DateTime.Now;
+            Product product = new Product
+            {
+                ProductName = name,
+                Description = description,
+                Price = price,
+                StockQuantity = stock,
+                ImageUrl = image,
+                CategoryId = categoryId,
+                CreatedAt = DateTime.Now,
+                IsAvailable = true
+            };
 
-            // جعل المنتج متاحًا للبيع بشكل افتراضي
-            product.IsAvailable = true;
+            var category = context.Categories.FirstOrDefault(c => c.CategoryId == categoryId);
 
-            // إضافة المنتج إلى جدول Products
+            if (category == null)
+            {
+                Console.WriteLine("Category not found.");
+                return;
+            }
+
             context.Products.Add(product);
 
-            // حفظ البيانات في قاعدة البيانات
             context.SaveChanges();
 
-            // عرض رسالة نجاح
-            Console.WriteLine("Product Added Successfully.");
+            Console.WriteLine("Product Added.");
         }
-
 
 
         //***************************************** MENU *****************************************//
 
         static void Main(string[] args)
         {
+            using var context = new ApplicationDbContext();
+
             while (true)
             {
-                Console.WriteLine("\n******** E-Commerce System *******");
-                Console.WriteLine("************************************");
+                Console.WriteLine("\n===== E-Commerce System =====");
                 Console.WriteLine("1. Register User");
                 Console.WriteLine("2. Add Product");
+                Console.WriteLine("3. Place Order");
+                Console.WriteLine("4. Write Review");
+                Console.WriteLine("5. Update Product");
+                Console.WriteLine("6. Cancel Order");
+                Console.WriteLine("7. Delete Review");
+                Console.WriteLine("8. View All Products");
+                Console.WriteLine("9. Filter Products");
+                Console.WriteLine("10. Category With Products");
+                Console.WriteLine("11. Order History");
+                Console.WriteLine("12. Product Summary");
+                Console.WriteLine("0. Exit");
 
                 Console.Write("Choose: ");
                 int choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
                 {
-                    case 1:
-                        RegisterNewUser();
-                        break;
-
-
-
-                    case 2:
-                        AddNewProduct();
-                        break;
-                    case 0:
-                        return;
+                    case 1: RegisterUser(context); break;
+                    case 2: AddProduct(context); break;
+                    //case 3: PlaceOrder(context); break;
+                    //case 4: WriteReview(context); break;
+                    //case 5: UpdateProduct(context); break;
+                    //case 6: CancelOrder(context); break;
+                    //case 7: DeleteReview(context); break;
+                    //case 8: ViewAllProducts(context); break;
+                    //case 9: FilterProducts(context); break;
+                    //case 10: GetCategoryWithProducts(context); break;
+                    //case 11: ViewOrderHistory(context); break;
+                    //case 12: ProductSummaryReport(context); break;
+                    case 0: return;
                 }
             }
         }
