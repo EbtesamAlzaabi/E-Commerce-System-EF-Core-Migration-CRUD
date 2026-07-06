@@ -8,6 +8,8 @@ namespace ECommerceSystem
         // إنشاء كائن من قاعدة البيانات للتعامل مع EF Core
         static ApplicationDbContext context = new ApplicationDbContext();
 
+
+        //******************************************* Register a New User ***************************************//
         public static void RegisterNewUser()
         {
             // عنوان العملية
@@ -56,7 +58,7 @@ namespace ECommerceSystem
             Console.WriteLine($"User Registered Successfully. ID = {user.UserId}");
         }
 
-
+        //******************************************** Add a New Product to a Category **************************************//
         public static void AddNewProduct()
         {
             // عرض عنوان العملية
@@ -113,11 +115,14 @@ namespace ECommerceSystem
 
 
 
+        //***************************************** MENU *****************************************//
+
         static void Main(string[] args)
         {
             while (true)
             {
-                Console.WriteLine("\n===== E-Commerce System =====");
+                Console.WriteLine("\n******** E-Commerce System *******");
+                Console.WriteLine("************************************");
                 Console.WriteLine("1. Register User");
                 Console.WriteLine("2. Add Product");
 
@@ -130,10 +135,11 @@ namespace ECommerceSystem
                         RegisterNewUser();
                         break;
 
+
+
                     case 2:
                         AddNewProduct();
                         break;
-
                     case 0:
                         return;
                 }

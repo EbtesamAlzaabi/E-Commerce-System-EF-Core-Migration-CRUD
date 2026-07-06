@@ -258,3 +258,4 @@ C:\Users\ebtes\OneDrive\Desktop\backent taske in app\MS Karim\E-Commerce System\
 C:\Users\ebtes\OneDrive\Desktop\backent taske in app\MS Karim\E-Commerce System\ECommerceSystem\ECommerceSystem\obj\Debug\net8.0\ECommerc.18DFE779.Up2Date
 C:\Users\ebtes\OneDrive\Desktop\backent taske in app\MS Karim\E-Commerce System\ECommerceSystem\ECommerceSystem\obj\Debug\net8.0\ECommerceSystem.genruntimeconfig.cache
 C:\Users\ebtes\OneDrive\Desktop\backent taske in app\MS Karim\E-Commerce System\ECommerceSystem\ECommerceSystem\obj\Debug\net8.0\ref\ECommerceSystem.dll
+C:\Users\ebtes\OneDrive\Desktop\backent taske in app\MS Karim\E-Commerce System\ECommerceSystem\ECommerceSystem\obj\Debug\net8.0\ECommerceSystem.sourcelink.json
