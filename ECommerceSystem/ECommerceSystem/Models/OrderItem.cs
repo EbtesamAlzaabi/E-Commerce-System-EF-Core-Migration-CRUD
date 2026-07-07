@@ -27,6 +27,8 @@ namespace ECommerceSystem.Models
         [Range(1, 999)]
         public int Quantity { get; set; } // user input
 
+        public decimal UnitPrice { get; set; }  // user input
+
         // Navigation Properties
         public Order Order { get; set; }
 

@@ -9,7 +9,7 @@ namespace ECommerceSystem
         static  ApplicationDbContext context = new ApplicationDbContext();
 
 
-        //******************************************* Register a New User ***************************************//
+        //******************************************* 1- Register a New User ***************************************//
         static void RegisterUser(ApplicationDbContext context)
         {
             // عنوان العملية
@@ -53,9 +53,11 @@ namespace ECommerceSystem
                 Console.WriteLine($"Assigned User ID = {user.UserId}");
             }
         }
-        //******************************************** Add a New Product to a Category **************************************//
+        //******************************************** 2- Add a New Product to a Category **************************//
         static void AddProduct(ApplicationDbContext context)
         {
+            Console.WriteLine("===== Add Product =====");
+
             Console.WriteLine("Categories:");
 
             foreach (var c in context.Categories.ToList())
@@ -107,9 +109,53 @@ namespace ECommerceSystem
 
             Console.WriteLine("Product Added.");
         }
+        //******************************************** 3- Place an Order ******************************************//
+        static void PlaceOrder(ApplicationDbContext context)
+        {
+            Console.WriteLine("===== Write Plac eOrder =====");
+
+            // 1- عرض المستخدمين
+
+            Console.WriteLine("Available Users:");
+
+            var users = context.Users.ToList();
+
+            foreach (var user in users)
+            {
+                Console.WriteLine($"{user.UserId} - {user.FullName}");
+            }
+
+            // 2- اختيار المستخدم
+
+            Console.Write("Enter User ID: ");
+            int userId = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Shipping Address: ");
+            string shippingAddress = Console.ReadLine();
+
+            Console.Write("Enter Payment Method (Cash / Card): ");
+            string paymentMethod = Console.ReadLine();
+
+            // 3- إنشاء الطلب
+            Order order = new Order
+            {
+                UserId = userId,
+                OrderDate = DateTime.Now,
+                TotalAmount = 0,
+                Status = "Pending",
+                ShippingAddress = shippingAddress,
+                PaymentMethod = paymentMethod
+            };
+
+            context.Orders.Add(order);
+            context.SaveChanges();
+
+            Console.WriteLine($"Order Created Successfully. Order ID = {order.OrderId}");
+        }
+     
+        //***************************************** MENU ******************************************************//
 
 
-        //***************************************** MENU *****************************************//
 
         static void Main(string[] args)
         {
@@ -121,7 +167,7 @@ namespace ECommerceSystem
                 Console.WriteLine("1. Register User");
                 Console.WriteLine("2. Add Product");
                 Console.WriteLine("3. Place Order");
-                Console.WriteLine("4. Write Review");
+                Console.WriteLine("4. Write Product Review");
                 Console.WriteLine("5. Update Product");
                 Console.WriteLine("6. Cancel Order");
                 Console.WriteLine("7. Delete Review");
@@ -129,18 +175,20 @@ namespace ECommerceSystem
                 Console.WriteLine("9. Filter Products");
                 Console.WriteLine("10. Category With Products");
                 Console.WriteLine("11. Order History");
-                Console.WriteLine("12. Product Summary");
+                //Console.WriteLine("12. Product Summary");
                 Console.WriteLine("0. Exit");
 
                 Console.Write("Choose: ");
+                
+                
                 int choice = int.Parse(Console.ReadLine());
 
                 switch (choice)
                 {
                     case 1: RegisterUser(context); break;
                     case 2: AddProduct(context); break;
-                    //case 3: PlaceOrder(context); break;
-                    //case 4: WriteReview(context); break;
+                    case 3: PlaceOrder(context); break;
+                    //case 4: WriteProductReview(context); break;
                     //case 5: UpdateProduct(context); break;
                     //case 6: CancelOrder(context); break;
                     //case 7: DeleteReview(context); break;
