@@ -302,6 +302,34 @@ namespace ECommerceSystem
             }
         }
 
+        //******************************************** 7- Cancel Order *******************************************//
+        static void DeleteReview(ApplicationDbContext context)
+        {
+            Console.WriteLine("===== Delete a Review =====");
+
+            Console.Write("Enter Review ID: ");
+            int reviewId = int.Parse(Console.ReadLine());
+
+            // البحث عن المراجعة
+            var review = context.Reviews.FirstOrDefault(r => r.ReviewId == reviewId);
+
+            if (review != null)
+            {
+                // حذف المراجعة
+                context.Reviews.Remove(review);
+
+                // حفظ التغييرات
+                context.SaveChanges();
+
+                Console.WriteLine("Review deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Review not found.");
+            }
+
+        }
+
         //***************************************** MENU ******************************************************//
 
 
@@ -340,7 +368,7 @@ namespace ECommerceSystem
                     case 4: WriteProductReview(context); break;
                     case 5: UpdateProduct(context); break;
                     case 6: CancelOrder(context); break;
-                    //case 7: DeleteReview(context); break;
+                    case 7: DeleteReview(context); break;
                     //case 8: ViewAllProducts(context); break;
                     //case 9: FilterProducts(context); break;
                     //case 10: GetCategoryWithProducts(context); break;
