@@ -330,6 +330,33 @@ namespace ECommerceSystem
 
         }
 
+        //******************************************** 8- View All Products ******************************************//
+        static void ViewAllProducts(ApplicationDbContext context)
+        {
+            Console.WriteLine("===== View All Products =====");
+
+
+            // جلب جميع المنتجات
+            var products = context.Products.ToList();
+
+            if (products.Any())
+            {
+                foreach (var product in products)
+                {
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine($"Product ID: {product.ProductId}");
+                    Console.WriteLine($"Name: {product.ProductName}");
+                    Console.WriteLine($"Price: {product.Price}");
+                    Console.WriteLine($"Stock Quantity: {product.StockQuantity}");
+                    Console.WriteLine($"Available: {product.IsAvailable}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No products found.");
+            }
+        }
+
         //***************************************** MENU ******************************************************//
 
 
@@ -369,7 +396,7 @@ namespace ECommerceSystem
                     case 5: UpdateProduct(context); break;
                     case 6: CancelOrder(context); break;
                     case 7: DeleteReview(context); break;
-                    //case 8: ViewAllProducts(context); break;
+                    case 8: ViewAllProducts(context); break;
                     //case 9: FilterProducts(context); break;
                     //case 10: GetCategoryWithProducts(context); break;
                     //case 11: ViewOrderHistory(context); break;
