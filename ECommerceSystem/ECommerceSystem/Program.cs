@@ -259,6 +259,49 @@ namespace ECommerceSystem
 
         }
 
+        //******************************************** 6- Cancel Order ********************************************//
+        static void CancelOrder(ApplicationDbContext context)
+        {
+            Console.WriteLine("===== Cancel Order =====");
+
+            Console.Write("Enter Order ID: ");
+            int orderId = int.Parse(Console.ReadLine());
+
+            // البحث عن الطلب
+            var order = context.Orders.FirstOrDefault(o => o.OrderId == orderId);
+
+            if (order != null)
+            {
+                // جلب جميع عناصر الطلب
+                var orderItems = context.OrderItems
+                                        .Where(oi => oi.OrderId == orderId)
+                                        .ToList();
+
+                // استرجاع الكمية لكل منتج
+                foreach (var item in orderItems)
+                {
+                    var product = context.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+
+                    if (product != null)
+                    {
+                        product.StockQuantity += item.Quantity;
+                    }
+                }
+
+                // تغيير حالة الطلب
+                order.Status = "Cancelled";
+
+                // حفظ التغييرات
+                context.SaveChanges();
+
+                Console.WriteLine("Order cancelled successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Order not found.");
+            }
+        }
+
         //***************************************** MENU ******************************************************//
 
 
@@ -296,7 +339,7 @@ namespace ECommerceSystem
                     case 3: PlaceOrder(context); break;
                     case 4: WriteProductReview(context); break;
                     case 5: UpdateProduct(context); break;
-                    //case 6: CancelOrder(context); break;
+                    case 6: CancelOrder(context); break;
                     //case 7: DeleteReview(context); break;
                     //case 8: ViewAllProducts(context); break;
                     //case 9: FilterProducts(context); break;
