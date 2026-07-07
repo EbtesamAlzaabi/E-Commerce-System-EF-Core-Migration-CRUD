@@ -152,7 +152,80 @@ namespace ECommerceSystem
 
             Console.WriteLine($"Order Created Successfully. Order ID = {order.OrderId}");
         }
-     
+
+        //******************************************** 4-  Write Product Review ***********************************//
+        static void WriteProductReview(ApplicationDbContext context)
+        {
+
+            Console.WriteLine("===== Write Product Review =====");
+
+            //اعرض المستخدمين
+            Console.WriteLine("\nAvailable Users:");
+
+            var users = context.Users.ToList();
+
+            foreach (var user in users)
+            {
+                Console.WriteLine($"{user.UserId} - {user.FullName}");
+            }
+
+            Console.Write("Enter User ID: ");
+            int userId = int.Parse(Console.ReadLine());
+
+
+            //اعرض المنتجات
+
+            Console.WriteLine("\nAvailable Products:");
+
+            var products = context.Products.ToList();
+
+            foreach (var product in products)
+            {
+                Console.WriteLine($"{product.ProductId} - {product.ProductName}");
+            }
+
+            Console.Write("Enter Product ID: ");
+            int productId = int.Parse(Console.ReadLine());
+
+            //اكتب التقييم والتعليق
+            Console.Write("Rating (1-5): ");
+            int rating = int.Parse(Console.ReadLine());
+
+            Console.Write("Comment: ");
+            string comment = Console.ReadLine();
+
+            // إنشاء المراجعة
+            Review review = new Review
+            {
+                UserId = userId,
+                ProductId = productId,
+                Rating = rating,
+                Comment = comment,
+                ReviewDate = DateTime.Now
+            };
+
+            var selectedUser = context.Users.FirstOrDefault(u => u.UserId == userId);
+
+            if (selectedUser == null)
+            {
+                Console.WriteLine("User not found!");
+                return;
+            }
+
+            var selectedProduct = context.Products.FirstOrDefault(p => p.ProductId == productId);
+
+            if (selectedProduct == null)
+            {
+                Console.WriteLine("Product not found!");
+                return;
+            }
+
+            context.Reviews.Add(review);
+            context.SaveChanges();
+
+            Console.WriteLine("\nReview added successfully.");
+        }
+
         //***************************************** MENU ******************************************************//
 
 
@@ -175,7 +248,7 @@ namespace ECommerceSystem
                 Console.WriteLine("9. Filter Products");
                 Console.WriteLine("10. Category With Products");
                 Console.WriteLine("11. Order History");
-                //Console.WriteLine("12. Product Summary");
+                Console.WriteLine("12. Product Summary");
                 Console.WriteLine("0. Exit");
 
                 Console.Write("Choose: ");
@@ -188,7 +261,7 @@ namespace ECommerceSystem
                     case 1: RegisterUser(context); break;
                     case 2: AddProduct(context); break;
                     case 3: PlaceOrder(context); break;
-                    //case 4: WriteProductReview(context); break;
+                    case 4: WriteProductReview(context); break;
                     //case 5: UpdateProduct(context); break;
                     //case 6: CancelOrder(context); break;
                     //case 7: DeleteReview(context); break;
