@@ -225,6 +225,39 @@ namespace ECommerceSystem
 
             Console.WriteLine("\nReview added successfully.");
         }
+        //******************************************** 5- Write Product Review ************************************//
+        static void UpdateProduct(ApplicationDbContext context)
+        {
+            Console.WriteLine("===== Update Product Price and Availability =====");
+
+            Console.Write("Enter Product ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            // البحث عن المنتج
+            var product = context.Products.FirstOrDefault(p => p.ProductId == id);
+
+            if (product != null)
+            {
+                // تحديث السعر
+                Console.Write("Enter new price: ");
+                product.Price = decimal.Parse(Console.ReadLine());
+
+                // تحديث حالة التوفر
+                Console.Write("Is Available (true/false): ");
+                product.IsAvailable = bool.Parse(Console.ReadLine());
+
+                // حفظ التغييرات في قاعدة البيانات
+                context.SaveChanges();
+
+                // رسالة تأكيد
+                Console.WriteLine("Product updated successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Product not found.");
+            }
+
+        }
 
         //***************************************** MENU ******************************************************//
 
@@ -262,7 +295,7 @@ namespace ECommerceSystem
                     case 2: AddProduct(context); break;
                     case 3: PlaceOrder(context); break;
                     case 4: WriteProductReview(context); break;
-                    //case 5: UpdateProduct(context); break;
+                    case 5: UpdateProduct(context); break;
                     //case 6: CancelOrder(context); break;
                     //case 7: DeleteReview(context); break;
                     //case 8: ViewAllProducts(context); break;
