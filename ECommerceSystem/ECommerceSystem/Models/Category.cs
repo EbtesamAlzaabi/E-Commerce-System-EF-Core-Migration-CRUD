@@ -27,6 +27,6 @@ namespace ECommerceSystem.Models
         public string? ImageUrl { get; set; } // user input
 
         // Navigation Property
-        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

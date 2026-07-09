@@ -40,8 +40,8 @@ namespace ECommerceSystem.Models
         public string PaymentMethod { get; set; } // from list
 
         // Navigation Properties
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public virtual ICollection<OrderItem> OrderItems { get; set; }  = new List<OrderItem>();
     }
 }

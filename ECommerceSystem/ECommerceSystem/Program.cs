@@ -1,12 +1,13 @@
 ﻿using ECommerceSystem.Data;
 using ECommerceSystem.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 namespace ECommerceSystem
 {
     internal class Program
     {
         // إنشاء كائن من قاعدة البيانات للتعامل مع EF Core
-        static  ApplicationDbContext context = new ApplicationDbContext();
+        static ApplicationDbContext context = new ApplicationDbContext();
 
 
         //******************************************* 1- Register a New User ***************************************//
@@ -357,55 +358,285 @@ namespace ECommerceSystem
             }
         }
 
-        //***************************************** MENU ******************************************************//
-
-
-
-        static void Main(string[] args)
+        //*************************** 9- Filter Products by Category and Price Range  *********************************//
+        static void FilterProducts(ApplicationDbContext context)
         {
-            using var context = new ApplicationDbContext();
+            Console.WriteLine("===== Filter Products by Category and Price Range =====");
 
-            while (true)
+
+            Console.Write("Enter Category ID: ");
+            int categoryId = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter Minimum Price: ");
+            decimal minPrice = decimal.Parse(Console.ReadLine());
+
+            Console.Write("Enter Maximum Price: ");
+            decimal maxPrice = decimal.Parse(Console.ReadLine());
+
+            // البحث والتصفية والترتيب
+            var products = context.Products
+                                  .Where(p => p.CategoryId == categoryId &&
+                                              p.Price >= minPrice &&
+                                              p.Price <= maxPrice)
+                                  .OrderBy(p => p.Price)
+                                  .ToList();
+
+            if (products.Any())
             {
-                Console.WriteLine("\n===== E-Commerce System =====");
-                Console.WriteLine("1. Register User");
-                Console.WriteLine("2. Add Product");
-                Console.WriteLine("3. Place Order");
-                Console.WriteLine("4. Write Product Review");
-                Console.WriteLine("5. Update Product");
-                Console.WriteLine("6. Cancel Order");
-                Console.WriteLine("7. Delete Review");
-                Console.WriteLine("8. View All Products");
-                Console.WriteLine("9. Filter Products");
-                Console.WriteLine("10. Category With Products");
-                Console.WriteLine("11. Order History");
-                Console.WriteLine("12. Product Summary");
-                Console.WriteLine("0. Exit");
-
-                Console.Write("Choose: ");
-                
-                
-                int choice = int.Parse(Console.ReadLine());
-
-                switch (choice)
+                foreach (var product in products)
                 {
-                    case 1: RegisterUser(context); break;
-                    case 2: AddProduct(context); break;
-                    case 3: PlaceOrder(context); break;
-                    case 4: WriteProductReview(context); break;
-                    case 5: UpdateProduct(context); break;
-                    case 6: CancelOrder(context); break;
-                    case 7: DeleteReview(context); break;
-                    case 8: ViewAllProducts(context); break;
-                    //case 9: FilterProducts(context); break;
-                    //case 10: GetCategoryWithProducts(context); break;
-                    //case 11: ViewOrderHistory(context); break;
-                    //case 12: ProductSummaryReport(context); break;
-                    case 0: return;
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine($"Product ID: {product.ProductId}");
+                    Console.WriteLine($"Name: {product.ProductName}");
+                    Console.WriteLine($"Price: {product.Price}");
+                    Console.WriteLine($"Stock Quantity: {product.StockQuantity}");
+                    Console.WriteLine($"Available: {product.IsAvailable}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No products found.");
+            }
+        }
+
+        //********************************* 10- Get Category with All Its Products ***********************************//
+
+        static void GetCategoryWithProducts(ApplicationDbContext context)
+        {
+            Console.WriteLine("===== Get Category with All Its Products =====");
+
+            // طلب رقم التصنيف من المستخدم
+            Console.Write("Enter Category ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            // جلب التصنيف مع جميع المنتجات التابعة له باستخدام Include()
+            // يتم تحميل التصنيف والمنتجات في استعلام واحد
+            var category = context.Categories
+                                  .Include(c => c.Products)
+                                  .FirstOrDefault(c => c.CategoryId == id);
+
+            // التأكد من وجود التصنيف
+            if (category != null)
+            {
+                // عرض معلومات التصنيف
+                Console.WriteLine("----------------------------");
+                Console.WriteLine($"Category Name: {category.CategoryName}");
+                Console.WriteLine($"Description: {category.Description}");
+
+                // عرض جميع المنتجات التابعة لهذا التصنيف
+                Console.WriteLine("\nProducts:");
+
+                foreach (var product in category.Products)
+                {
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine($"Product ID: {product.ProductId}");
+                    Console.WriteLine($"Product Name: {product.ProductName}");
+                    Console.WriteLine($"Price: {product.Price}");
+                    Console.WriteLine($"Stock Quantity: {product.StockQuantity}");
+                    Console.WriteLine($"Available: {product.IsAvailable}");
+                }
+            }
+            else
+            {
+                // عرض رسالة في حالة عدم العثور على التصنيف
+                Console.WriteLine("Category not found.");
+            }
+        }
+
+
+        //*************** 11- View Order History with Full Details (ThenInclude) **********************//
+
+        static void ViewOrderHistory(ApplicationDbContext context)
+        {
+
+            Console.WriteLine("===== View Order History with Full Details =====");
+
+
+            // طلب User ID من المستخدم
+            Console.Write("Enter User ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            // جلب المستخدم مع الطلبات وعناصر الطلب والمنتجات في استعلام واحد
+            var user = context.Users
+                              .Include(u => u.Orders)
+                                  .ThenInclude(o => o.OrderItems)
+                                      .ThenInclude(i => i.Product)
+                              .FirstOrDefault(u => u.UserId == id);
+
+            // التأكد من وجود المستخدم
+            if (user != null)
+            {
+                // عرض معلومات المستخدم
+                Console.WriteLine($"Customer ID: {user.UserId}");
+
+                Console.WriteLine("\nOrder History:");
+
+                // المرور على جميع طلبات المستخدم
+                foreach (var order in user.Orders)
+                {
+                    Console.WriteLine("----------------------------");
+
+                    // عرض تفاصيل الطلب
+                    Console.WriteLine($"Order Date: {order.OrderDate}");
+                    Console.WriteLine($"Status: {order.Status}");
+                    Console.WriteLine($"Total Amount: {order.TotalAmount}");
+
+                    Console.WriteLine("Products:");
+
+                    // المرور على كل منتج داخل الطلب
+                    foreach (var item in order.OrderItems)
+                    {
+                        Console.WriteLine("----------------------------");
+
+                        // عرض اسم المنتج من Navigation Property
+                        Console.WriteLine($"Product Name: {item.Product.ProductName}");
+
+                        // عرض السعر وقت الشراء من OrderItem
+                        Console.WriteLine($"Unit Price: {item.UnitPrice}");
+
+                        // عرض الكمية
+                        Console.WriteLine($"Quantity: {item.Quantity}");
+                    }
+                }
+            }
+            else
+            {
+                // إذا لم يتم العثور على المستخدم
+                Console.WriteLine("User not found.");
+            }
+        }
+
+
+
+        //********************************* 12- Product Summary Report  ***********************************//
+
+        static void ProductSummaryReport(ApplicationDbContext context)
+        {
+
+            Console.WriteLine("===== Part A - Product Summary Report =====");
+
+            //  هو إنشاء تقرير ملخص المنتجات باستخدام Projection - يتم تنفيذ استعلام SQL واحد بس
+            var productSummary = context.Products
+                .Select(p => new
+                {
+                    ProductName = p.ProductName,
+
+                    // اسم التصنيف
+                    CategoryName = p.Category.CategoryName,
+
+                    // عدد المراجعات
+                    ReviewCount = p.Reviews.Count(),
+
+                    // متوسط التقييم
+                    AvgRating = p.Reviews.Any()
+                        ? p.Reviews.Average(r => r.Rating)
+                        : 0,
+
+                    // كمية المخزون الحالية
+                    StockQuantity = p.StockQuantity
+                })
+                .ToList();
+
+            // عرض التقرير
+            Console.WriteLine("\n===== Product Summary Report =====");
+
+            foreach (var item in productSummary)
+            {
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine($"Product Name : {item.ProductName}");
+                Console.WriteLine($"Category     : {item.CategoryName}");
+                Console.WriteLine($"Reviews      : {item.ReviewCount}");
+                Console.WriteLine($"Avg Rating   : {item.AvgRating:F2}");
+                Console.WriteLine($"Stock        : {item.StockQuantity}");
+            }
+
+            //***************************************************************************//
+            // *****  Part B : Lazy Loading Demo *****//
+
+            // طلب رقم المنتج
+            Console.Write("Enter Product ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            // الاستعلام الأول
+            // يتم جلب المنتج فقط
+            var product = context.Products.FirstOrDefault(p => p.ProductId == id);
+
+            if (product != null)
+            {
+                Console.WriteLine($"Product Name: {product.ProductName}");
+
+                // ====================================================
+                // هنا يتم تنفيذ الاستعلام الثاني تلقائياً
+                // عند الوصول إلى Reviews بسبب Lazy Loading
+                // ====================================================
+
+                Console.WriteLine($"Number of Reviews: {product.Reviews.Count}");
+
+                foreach (var review in product.Reviews)
+                {
+                    Console.WriteLine("----------------------");
+                    Console.WriteLine($"Rating : {review.Rating}");
+                    Console.WriteLine($"Comment: {review.Comment}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Product not found.");
+            }
+        }
+            //***************************************** MENU ******************************************************//
+
+            static void Main(string[] args)
+            {
+                using var context = new ApplicationDbContext();
+
+                while (true)
+                {
+                    Console.Clear();
+
+
+                    Console.WriteLine("*---------------------------------------------");
+                    Console.WriteLine("          E-Commerce Management System        ");
+                    Console.WriteLine("*---------------------------------------------");
+                    Console.WriteLine(" 1.  Register User");
+                    Console.WriteLine(" 2.  Add Product");
+                    Console.WriteLine(" 3.  Place Order");
+                    Console.WriteLine(" 4.  Write Product Review");
+                    Console.WriteLine(" 5.  Update Product");
+                    Console.WriteLine(" 6.  Cancel Order");
+                    Console.WriteLine(" 7.  Delete Review");
+                    Console.WriteLine(" 8.  View All Products");
+                    Console.WriteLine(" 9.  Filter Products");
+                    Console.WriteLine("10.  View Category with Products");
+                    Console.WriteLine("11.  View Order History");
+                    Console.WriteLine("12.  Product Summary Report");
+                    Console.WriteLine("*---------------------------------------------");
+                    Console.WriteLine(" 0.  Exit");
+                    Console.WriteLine("*---------------------------------------------");
+                    Console.Write("Enter your choice: ");
+
+                    int choice = int.Parse(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1: RegisterUser(context); break;
+                        case 2: AddProduct(context); break;
+                        case 3: PlaceOrder(context); break;
+                        case 4: WriteProductReview(context); break;
+                        case 5: UpdateProduct(context); break;
+                        case 6: CancelOrder(context); break;
+                        case 7: DeleteReview(context); break;
+                        case 8: ViewAllProducts(context); break;
+                        case 9: FilterProducts(context); break;
+                        case 10: GetCategoryWithProducts(context); break;
+                        case 11: ViewOrderHistory(context); break;
+                        case 12: ProductSummaryReport(context); break;
+                        case 0: return;
+                    }
                 }
             }
         }
     }
-}
+
         
         

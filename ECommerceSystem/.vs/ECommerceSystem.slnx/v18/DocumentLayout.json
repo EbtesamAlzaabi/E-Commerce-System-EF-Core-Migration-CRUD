@@ -7,12 +7,32 @@
       "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|solutionrelative:ecommercesystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{295DD710-7BAF-AE6C-93C7-DE3EAE64270A}|ECommerceSystem\\ECommerceSystem.csproj|c:\\users\\ebtes\\onedrive\\desktop\\backent taske in app\\ms karim\\e-commerce system\\ecommercesystem\\ecommercesystem\\migrations\\20260707074122_addunitpricetoorderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,7 +54,67 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\User.cs",
+              "RelativeDocumentMoniker": "ECommerceSystem\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\User.cs",
+              "RelativeToolTip": "ECommerceSystem\\Models\\User.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA1wDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T11:35:46.112Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "ECommerceSystem\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Order.cs",
+              "RelativeToolTip": "ECommerceSystem\\Models\\Order.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCwAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T11:35:10.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "ECommerceSystem\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Category.cs",
+              "RelativeToolTip": "ECommerceSystem\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T11:31:10.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "ECommerceSystem\\Models\\Review.cs",
+              "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Review.cs",
+              "RelativeToolTip": "ECommerceSystem\\Models\\Review.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAA9wCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T11:22:35.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "ECommerceSystem\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\Product.cs",
+              "RelativeToolTip": "ECommerceSystem\\Models\\Product.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAA4wDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T11:21:53.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "20260707074122_AddUnitPriceToOrderItem.cs",
               "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Migrations\\20260707074122_AddUnitPriceToOrderItem.cs",
               "RelativeDocumentMoniker": "ECommerceSystem\\Migrations\\20260707074122_AddUnitPriceToOrderItem.cs",
@@ -42,8 +122,7 @@
               "RelativeToolTip": "ECommerceSystem\\Migrations\\20260707074122_AddUnitPriceToOrderItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T07:41:22.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-07T07:41:22.996Z"
             },
             {
               "$type": "Document",
@@ -53,23 +132,21 @@
               "RelativeDocumentMoniker": "ECommerceSystem\\Models\\OrderItem.cs",
               "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Models\\OrderItem.cs",
               "RelativeToolTip": "ECommerceSystem\\Models\\OrderItem.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABcAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T07:30:30.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-07T07:30:30.141Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "ECommerceSystem\\Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "ECommerceSystem\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T11:46:15.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-06T11:46:15.051Z"
             },
             {
               "$type": "Document",
@@ -79,7 +156,7 @@
               "RelativeDocumentMoniker": "ECommerceSystem\\Program.cs",
               "ToolTip": "C:\\Users\\ebtes\\OneDrive\\Desktop\\backent taske in app\\MS Karim\\E-Commerce System\\ECommerceSystem\\ECommerceSystem\\Program.cs",
               "RelativeToolTip": "ECommerceSystem\\Program.cs",
-              "ViewState": "AgIAAOMAAAAAAAAAAAAqwGYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgCAAAAAAAAAAAYwP4BAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-06T11:03:50.483Z",
               "EditorCaption": ""

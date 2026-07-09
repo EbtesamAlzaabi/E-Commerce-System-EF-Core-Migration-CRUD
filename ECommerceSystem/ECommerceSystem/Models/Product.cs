@@ -43,10 +43,10 @@ namespace ECommerceSystem.Models
         public bool IsAvailable { get; set; } = true; // default value
 
         // Navigation Properties
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 
-        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }

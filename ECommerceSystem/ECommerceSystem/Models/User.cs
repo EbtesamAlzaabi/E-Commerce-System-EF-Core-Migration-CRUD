@@ -44,8 +44,8 @@ namespace ECommerceSystem.Models
         public bool IsActive { get; set; } = true; // default value
 
         // Navigation Properties
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
+        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

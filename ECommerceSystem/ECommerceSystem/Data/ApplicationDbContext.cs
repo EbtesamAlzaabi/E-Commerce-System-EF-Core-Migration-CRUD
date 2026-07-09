@@ -20,12 +20,11 @@ namespace ECommerceSystem.Data
         public DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //هذه الدالة مسؤولة عن إعداد الاتصال بقاعدة البيانات.
         {
-
-            optionsBuilder.UseSqlServer(
-               @"Server=EBTESAM;Database=ECommerceDB;Trusted_Connection=True;TrustServerCertificate=True;");
-
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer(
+                @"Server=EBTESAM;Database=ECommerceDB;Trusted_Connection=True;TrustServerCertificate=True;");
         }
     }
 }
